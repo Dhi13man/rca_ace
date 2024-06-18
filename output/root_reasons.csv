@@ -1,6 +1,7 @@
 rca_file,root_reason_brief,root_reason_details
-Sample RCA.md,logic incorrect,The calculation logic showed wrong bill due dates.
-Sample RCA.md,wrong date,Date difference function used local date instead of server date.
-Sample RCA.md,hardcoded date,Local date was hardcoded due to a previous quick-fix for timezone issue.
-Sample RCA.md,quick-fix,Quick-fix implemented without thorough testing due to tight deadline.
-Sample RCA.md,risk underestimated,Lack of comprehensive testing framework and insufficient code review.
+Sample RCA.md,calculation logic,The calculation logic for the due date display was incorrect.
+Sample RCA.md,date function,The date difference function used the system's local date instead of the server date.
+Sample RCA.md,hardcoding,The local date was hardcoded into the billing module due to a previous quick-fix for a timezone issue.
+Sample RCA.md,quick fix,A quick-fix solution was implemented without thorough testing.
+Sample RCA.md,deadline pressure,"There was a tight deadline for a minor release, and the fix was deemed low-risk."
+Sample RCA.md,risk assessment,The risk of the fix was underestimated due to lack of a comprehensive testing framework and insufficient code review processes.

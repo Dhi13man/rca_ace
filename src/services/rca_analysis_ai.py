@@ -2,11 +2,12 @@
 Parses the human-written RCA and extracting the root reasons and actionables.
 """
 
+import re
 from json import loads
 from openai import OpenAI
 from openai.resources.chat.completions import ChatCompletion
 
-from src.models.rca_analysis_insights import RCAAnalysisInsights
+from src.models.rca_analysis_insights import RCAAnalysisInsights, Insight
 
 
 class RCAAnalysisAI:
@@ -40,7 +41,7 @@ class RCAAnalysisAI:
             "brief should be a concise, high-level tag, represented with 1 or 2 well-defined words"
             "in alphabetical order, separated only by space (eg., 'documentation', 'monitoring', "
             "'code review'). It should be a common term that can be used to categorize the details."
-            " details should provide more issue-specific information and relevant context,"
+            "details should provide more issue-specific information and relevant context,"
             "represented with a few words or a short sentence. brief is minimal, details maximal."
             "Respond with a JSON object containing two keys: 'root_reasons' and 'actionables', "
             "each holding list of simplified, common insights without numbers, special characters."
@@ -48,7 +49,7 @@ class RCAAnalysisAI:
             " the number of requests increased.'}], 'actionables': [{'brief': 'capacity', "
             "'details': 'Ensure we have enough capacity to handle peak traffic.'}, {'brief': "
             "'alerting', 'details': 'Set up alerts to notify us when CPU usage is high.'}]}"
-        )
+        ),
     }
 
     def __init__(self, open_ai_client: OpenAI) -> "RCAAnalysisAI":
@@ -59,7 +60,7 @@ class RCAAnalysisAI:
         Extracts the insights from the given RCA text
 
         Args:
-            rca_text (str): The RCA text
+            rca_text: The RCA text
 
         Returns:
             RCAAnalysisInsights: The insights extracted from the RCA text
@@ -77,7 +78,38 @@ class RCAAnalysisAI:
         # Extract the response from the completion
         first_choice_message_content: str = completion.choices[0].message.content
         content_json: dict = loads(first_choice_message_content)
-        print(content_json)
 
         # Parse the response to RCAAnalysisInsights object
-        return RCAAnalysisInsights.from_json(content_json)
+        insights: RCAAnalysisInsights = RCAAnalysisInsights.from_json(content_json)
+
+        # Post-process the insights and return
+        insights.root_reasons = self.post_process_insights(insights.root_reasons)
+        insights.actionables = self.post_process_insights(insights.actionables)
+        print(insights.to_json())
+        return insights
+
+    def post_process_insights(self, insights: list[Insight]) -> list[Insight]:
+        """
+        Post-process the insights to improve the quality and readability
+
+        Args:
+            insights: The insights extracted from the RCA text
+
+        Returns:
+            list[Insight]: The post-processed insights
+        """
+        processed: list[Insight] = []
+        for insight in insights:
+            brief: str = insight.brief
+            details: str = insight.details
+
+            # Post-process the brief
+            brief = brief.strip().lower()
+            brief = re.sub(r"([^a-z])|(\s+)|(\n+)", " ", brief)
+
+            # Post-process the details
+            details = details.strip()
+
+            # Add the processed insight
+            processed.append(Insight(brief=brief, details=details))
+        return insights
