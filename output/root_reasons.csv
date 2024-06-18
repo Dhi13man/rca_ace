@@ -1,6 +1,9 @@
 rca_file,root_reason
-Sample RCA.md,incorrect calculation logic
+Sample RCA.md,calculation logic wrong
+Sample RCA.md,local date used
 Sample RCA.md,hardcoded date
-Sample RCA.md,quick fix without testing
+Sample RCA.md,quick-fix without testing
 Sample RCA.md,tight deadline
+Sample RCA.md,risk underestimated
+Sample RCA.md,lack of comprehensive testing
 Sample RCA.md,insufficient code review
