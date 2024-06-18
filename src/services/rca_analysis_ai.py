@@ -111,4 +111,4 @@ class RCAAnalysisAI:
 
             # Add the processed insight
             processed.append(Insight(brief=brief, details=details))
-        return insights
+        return processed
