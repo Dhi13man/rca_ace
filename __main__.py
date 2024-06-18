@@ -3,23 +3,29 @@ The main module to run the RCA analysis AI service
 """
 
 from os.path import join
+from typing import LiteralString
 from openai import OpenAI
 import pandas as pd
 
 from src.services.rca_analysis_ai import RCAAnalysisAI
 from src.services.rca_reader import RCAReader
 
-INPUT_DIR = "./rcas"
-OUTPUT_DIR = "./output"
+INPUT_DIR: str = "./rcas"
+OUTPUT_DIR: str = "./output"
 
-RCA_FILE_HEADER = "rca_file"
-ACTIONABLE_HEADER = "actionable"
-ROOT_REASON_HEADER = "root_reason"
+RCA_FILE_HEADER: str = "rca_file"
+ACTIONABLE_HEADER: str = "actionable"
+ROOT_REASON_HEADER: str = "root_reason"
+
+ACTIONABLES_CSV_PATH: LiteralString = join(OUTPUT_DIR, "actionables.csv")
+ROOT_REASONS_CSV_PATH: LiteralString = join(OUTPUT_DIR, "root_reasons.csv")
 
 if __name__ == "__main__":
     # Create the Components
     rca_reader: RCAReader = RCAReader()
-    open_ai_client: OpenAI = OpenAI(max_retries=5)
+    open_ai_client: OpenAI = OpenAI(
+        max_retries=5,
+    )
     rca_analysis_ai: RCAAnalysisAI = RCAAnalysisAI(open_ai_client)
 
     # The human-written RCA text
@@ -44,5 +50,5 @@ if __name__ == "__main__":
     actionables_df = pd.DataFrame(actionables)
     root_reasons_df = pd.DataFrame(root_reasons)
     # Write the data to the CSV files
-    actionables_df.to_csv(join(OUTPUT_DIR, "actionables.csv"), index=False)
-    root_reasons_df.to_csv(join(OUTPUT_DIR, "root_reasons.csv"), index=False)
+    actionables_df.to_csv(ACTIONABLES_CSV_PATH, index=False)
+    root_reasons_df.to_csv(ROOT_REASONS_CSV_PATH, index=False)
