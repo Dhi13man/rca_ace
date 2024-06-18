@@ -37,7 +37,7 @@ class RCAAnalysisAI:
             "minimal words. The number of items in root reasons and actionables should be "
             "maximised while the number of words in each individual item is minimised."
             "Each root_reason / actionable should have a brief and a detailed description. "
-            "The brief should be a concise, high-level wording with max 2-3 words, while detailed "
+            "The brief should be a concise, high-level wording with max 1-2 words, while detailed "
             "description should provide more issue-specific context and information."
             "Respond with a JSON object containing two keys: 'root_reasons' and 'actionables', "
             "each holding list of simplified, common insights without numbers, special characters."

@@ -10,8 +10,8 @@ import pandas as pd
 from src.services.rca_analysis_ai import RCAAnalysisAI
 from src.services.rca_reader import RCAReader
 
-INPUT_DIR: str = "./rcas"
-OUTPUT_DIR: str = "./output"
+INPUT_DIR: str = "./private/rcas"
+OUTPUT_DIR: str = "./private/output"
 
 RCA_FILE_HEADER: str = "rca_file"
 ACTIONABLE_BRIEF_HEADER: str = "actionable_brief"
