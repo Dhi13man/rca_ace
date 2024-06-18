@@ -68,7 +68,7 @@ This can be done by simply creating pivot tables, graphs, and charts from the st
 
 Or create a fancy word cloud to visualize the most common root causes and their corresponding actionable steps.
 
-![Word Cloud](https://github.com/Dhi13man/rca_ace/blob/main/assets/screenshots/fancy_word_cloud.png)
+![Word Cloud](https://github.com/Dhi13man/rca_ace/blob/main/assets/screenshots/action_item_fancy_word_cloud.png.png)
 
 ## Contribution
 
