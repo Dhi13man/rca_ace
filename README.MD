@@ -50,6 +50,26 @@ RCA Ace is designed for organizations seeking to enhance their understanding and
 
 RCA Ace simplifies the RCA analysis process into a few straightforward steps, starting from reading and cleaning RCA documents, extracting insights using AI, to exporting structured data into CSV files for further analysis.
 
+## Use Cases
+
+### Data Analysis
+
+The structured data extracted by RCA Ace can be used for in-depth data analysis, enabling organizations to identify trends, patterns, and recurring issues across multiple RCAs.
+
+### Actionable Prioritization
+
+RCA Ace helps organizations prioritize actionable steps based on the root causes identified in RCAs, ensuring that the most critical issues are addressed promptly.
+
+This can be done by simply creating pivot tables, graphs, and charts from the structured data to visualize the most common root causes and their corresponding actionable steps.
+
+| Actionable Step Frequencies                                                                                                           | Root Cause Frequencies                                                                                                             |
+| ------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| ![Actionable Step Frequencies](https://github.com/Dhi13man/rca_ace/blob/main/assets/screenshots/actionable_frequency_pivot_table.png) | ![Root Cause Frequencies](https://github.com/Dhi13man/rca_ace/blob/main/assets/screenshots/root_reasons_frequency_pivot_table.png) |
+
+Or create a fancy word cloud to visualize the most common root causes and their corresponding actionable steps.
+
+![Word Cloud](https://github.com/Dhi13man/rca_ace/blob/main/assets/screenshots/fancy_word_cloud.png)
+
 ## Contribution
 
 Contributions are welcome. For major changes, please open an issue first to discuss what you would like to change.
