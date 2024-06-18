@@ -14,8 +14,10 @@ INPUT_DIR: str = "./rcas"
 OUTPUT_DIR: str = "./output"
 
 RCA_FILE_HEADER: str = "rca_file"
-ACTIONABLE_HEADER: str = "actionable"
-ROOT_REASON_HEADER: str = "root_reason"
+ACTIONABLE_BRIEF_HEADER: str = "actionable_brief"
+ACTIONABLE_DETAILS_HEADER: str = "actionable_details"
+ROOT_REASON_BRIEF_HEADER: str = "root_reason_brief"
+ROOT_REASON_DETAILS_HEADER: str = "root_reason_details"
 
 ACTIONABLES_CSV_PATH: LiteralString = join(OUTPUT_DIR, "actionables.csv")
 ROOT_REASONS_CSV_PATH: LiteralString = join(OUTPUT_DIR, "root_reasons.csv")
@@ -39,11 +41,19 @@ if __name__ == "__main__":
 
         for actionable in insights.actionables:
             actionables.append(
-                {RCA_FILE_HEADER: rca_file, ACTIONABLE_HEADER: actionable}
+                {
+                    RCA_FILE_HEADER: rca_file,
+                    ACTIONABLE_BRIEF_HEADER: actionable.brief,
+                    ACTIONABLE_DETAILS_HEADER: actionable.details,
+                }
             )
         for root_reason in insights.root_reasons:
             root_reasons.append(
-                {RCA_FILE_HEADER: rca_file, ROOT_REASON_HEADER: root_reason}
+                {
+                    RCA_FILE_HEADER: rca_file, 
+                    ROOT_REASON_BRIEF_HEADER: root_reason.brief,
+                    ROOT_REASON_DETAILS_HEADER: root_reason.details,
+                }
             )
 
     # Create the CSV files

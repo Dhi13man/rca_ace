@@ -36,9 +36,15 @@ class RCAAnalysisAI:
             "unnecessary details. It is fine to have wrong grammar if the meaning is clear with "
             "minimal words. The number of items in root reasons and actionables should be "
             "maximised while the number of words in each individual item is minimised."
+            "Each root_reason / actionable should have a brief and a detailed description. "
+            "The brief should be a concise, high-level wording with max 2-3 words, while detailed "
+            "description should provide more issue-specific context and information."
             "Respond with a JSON object containing two keys: 'root_reasons' and 'actionables', "
-            "each holding a list of simplified, common terms without numbers or special characters."
-            "Example: {'root_reasons': ['cpu high'], 'actionables': ['capacity planning']}."
+            "each holding list of simplified, common insights without numbers, special characters."
+            "Example: {'root_reasons': [{'brief': 'cpu high', 'details': 'CPU usage became high as"
+            " the number of requests increased.'}], 'actionables': [{'brief': 'capacity planning', "
+            "'details': 'Ensure we have enough capacity to handle peak traffic.'}, {'brief': "
+            "'alerting', 'details': 'Set up alerts to notify us when CPU usage is high.'}]}"
         )
     }
 
