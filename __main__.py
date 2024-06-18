@@ -3,7 +3,6 @@ The main module to run the RCA analysis AI service
 """
 
 from os.path import join
-from typing import LiteralString
 from openai import OpenAI
 import pandas as pd
 
@@ -19,8 +18,8 @@ ACTIONABLE_DETAILS_HEADER: str = "actionable_details"
 ROOT_REASON_BRIEF_HEADER: str = "root_reason_brief"
 ROOT_REASON_DETAILS_HEADER: str = "root_reason_details"
 
-ACTIONABLES_CSV_PATH: LiteralString = join(OUTPUT_DIR, "actionables.csv")
-ROOT_REASONS_CSV_PATH: LiteralString = join(OUTPUT_DIR, "root_reasons.csv")
+ACTIONABLES_CSV_PATH: str = join(OUTPUT_DIR, "actionables.csv")
+ROOT_REASONS_CSV_PATH: str = join(OUTPUT_DIR, "root_reasons.csv")
 
 if __name__ == "__main__":
     # Create the Components
