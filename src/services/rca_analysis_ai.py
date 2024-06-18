@@ -85,7 +85,6 @@ class RCAAnalysisAI:
         # Post-process the insights and return
         insights.root_reasons = self.post_process_insights(insights.root_reasons)
         insights.actionables = self.post_process_insights(insights.actionables)
-        print(insights.to_json())
         return insights
 
     def post_process_insights(self, insights: list[Insight]) -> list[Insight]:

@@ -37,6 +37,7 @@ if __name__ == "__main__":
     actionables = []
     root_reasons = []
     for rca_file, rca_text in rca_map.items():
+        print(f"Extracting insights from {rca_file}")
         insights = rca_analysis_ai.extract_insights(rca_text)
 
         for actionable in insights.actionables:
@@ -50,11 +51,17 @@ if __name__ == "__main__":
         for root_reason in insights.root_reasons:
             root_reasons.append(
                 {
-                    RCA_FILE_HEADER: rca_file, 
+                    RCA_FILE_HEADER: rca_file,
                     ROOT_REASON_BRIEF_HEADER: root_reason.brief,
                     ROOT_REASON_DETAILS_HEADER: root_reason.details,
                 }
             )
+
+        a_count: int = len(insights.actionables)
+        rr_count: int = len(insights.root_reasons)
+        print(
+            f"{a_count} actionables, {rr_count} root reasons extracted from {rca_file}"
+        )
 
     # Create the CSV files
     actionables_df = pd.DataFrame(actionables)
