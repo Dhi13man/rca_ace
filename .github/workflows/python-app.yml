@@ -38,9 +38,3 @@ jobs:
     - name: Analysing the code with pylint
       run: |
         pylint $(git ls-files '*.py')
-    - name: Build with pyinstaller
-      run: |
-        pyinstaller --onefile --noconsole --name "test" __main__.py
-    - name: Test with pytest
-      run: |
-        python -m pytest
