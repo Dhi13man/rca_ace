@@ -79,3 +79,7 @@ Contributions are welcome. For major changes, please open an issue first to disc
 Distributed under the MIT License. See `LICENSE` for more information.
 
 RCA Ace is the tool organizations need to unlock the full potential of their RCAs, ensuring no insight is overlooked and every actionable step is prioritized and implemented efficiently.
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md).
